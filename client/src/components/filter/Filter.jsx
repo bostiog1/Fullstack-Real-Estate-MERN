@@ -144,16 +144,16 @@ function Filter({ onFilter }) {
   return (
     <div className="filter">
       <h1>
-        Search results for <b>{searchParams.get("city")}</b>
+        Caută rezultate pentru <b>{searchParams.get("city")}</b>
       </h1>
       <div className="top">
         <div className="item">
-          <label htmlFor="city">Location</label>
+          <label htmlFor="city">Locația</label>
           <input
             type="text"
             id="city"
             name="city"
-            placeholder="City Location"
+            placeholder="Orașul căutat"
             onChange={handleChange}
             defaultValue={query.city}
           />
@@ -161,62 +161,60 @@ function Filter({ onFilter }) {
       </div>
       <div className="bottom">
         <div className="item">
-          <label htmlFor="type">Type</label>
+          <label htmlFor="type">Tip</label>
           <select
             name="type"
             id="type"
             onChange={handleChange}
             defaultValue={query.type}
           >
-            <option value="">any</option>
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
+            <option value="">Orice</option>
+            <option value="buy">Cumpară</option>
+            <option value="rent">Inchiriază</option>
           </select>
         </div>
         <div className="item">
-          <label htmlFor="property">Property</label>
+          <label htmlFor="property">Proprietate</label>
           <select
             name="property"
             id="property"
             onChange={handleChange}
             defaultValue={query.property}
           >
-            <option value="">any</option>
-            <option value="apartment">Apartment</option>
-            <option value="house">House</option>
-            <option value="condo">Condo</option>
-            <option value="land">Land</option>
+            <option value="">Orice</option>
+            <option value="apartment">Apartament</option>
+            <option value="house">Casă</option>
           </select>
         </div>
         <div className="item">
-          <label htmlFor="minPrice">Min Price</label>
+          <label htmlFor="minPrice">Preț Minim</label>
           <input
             type="number"
             id="minPrice"
             name="minPrice"
-            placeholder="any"
+            placeholder="Orice"
             onChange={handleChange}
             defaultValue={query.minPrice}
           />
         </div>
         <div className="item">
-          <label htmlFor="maxPrice">Max Price</label>
+          <label htmlFor="maxPrice">Preț Maxim</label>
           <input
             type="text"
             id="maxPrice"
             name="maxPrice"
-            placeholder="any"
+            placeholder="Orice"
             onChange={handleChange}
             defaultValue={query.maxPrice}
           />
         </div>
         <div className="item">
-          <label htmlFor="bedroom">Bedroom</label>
+          <label htmlFor="bedroom">Camere</label>
           <input
             type="text"
             id="bedroom"
             name="bedroom"
-            placeholder="any"
+            placeholder="Orice"
             onChange={handleChange}
             defaultValue={query.bedroom}
           />

@@ -28,7 +28,7 @@
       }
 
       .title {
-        font-size: 64px;
+        font-size: 50px;
 
         @include lg {
           font-size: 48px;
@@ -37,7 +37,8 @@
 
       .boxes {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
+        gap: 50px;
 
         @include sm {
           display: none;

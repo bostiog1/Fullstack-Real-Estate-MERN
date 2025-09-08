@@ -1,14 +1,14 @@
 export const listData = [
   {
     id: 1,
-    title: "A Great Apartment Next to the Beach!",
+    title: "Un apartament minunat lângă plajă!",
     images: [
       "https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     ],
     bedroom: 2,
     bathroom: 1,
     price: 1000,
-    address: "456 Park Avenue, London",
+    address: "123 Strada Pestelui, Constanta",
     latitude: 51.5074,
     longitude: -0.1278,
     type: "buy",

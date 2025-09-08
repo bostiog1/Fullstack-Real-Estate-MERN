@@ -27,9 +27,9 @@ function ProfilePage() {
       <div className="details">
         <div className="wrapper">
           <div className="title">
-            <h1>User Information</h1>
+            <h1>Informații despre utilizator</h1>
             <Link to="/profile/update">
-              <button>Update Profile</button>
+              <button>Actualizarea profilului</button>
             </Link>
           </div>
           <div className="info">
@@ -38,7 +38,7 @@ function ProfilePage() {
               <img src={currentUser.avatar || "noavatar.jpg"} alt="" />
             </span>
             <span>
-              Username: <b>{currentUser.username}</b>
+              Nume: <b>{currentUser.username}</b>
             </span>
             <span>
               E-mail: <b>{currentUser.email}</b>
@@ -46,9 +46,9 @@ function ProfilePage() {
             <button onClick={handleLogout}>Logout</button>
           </div>
           <div className="title">
-            <h1>My List</h1>
+            <h1>Lista mea</h1>
             <Link to="/add">
-              <button>Create New Post</button>
+              <button>Creați o postare nouă</button>
             </Link>
           </div>
           <Suspense fallback={<p>Loading...</p>}>

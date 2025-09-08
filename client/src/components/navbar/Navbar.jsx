@@ -93,10 +93,10 @@ function Navbar() {
           <span>Boost</span>
         </Link>
         {/* Use Link components for client-side routing */}
-        <Link to="/">Home</Link>
-        <Link to="/list">Properties</Link>{" "}
+        <Link to="/">Acasă</Link>
+        <Link to="/list">Proprietăți</Link>{" "}
         {/* This is the new link to all properties */}
-        <Link to="/about">About</Link>
+        <Link to="/about">Despre noi</Link>
         <Link to="/contact">Contact</Link>
       </div>
       <div className="right">
@@ -106,7 +106,7 @@ function Navbar() {
             <span>{currentUser.username}</span>
             <Link to="/profile" className="profile">
               {number > 0 && <div className="notification">{number}</div>}
-              <span>Profile</span>
+              <span>Profil</span>
             </Link>
           </div>
         ) : (

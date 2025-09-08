@@ -40,24 +40,24 @@ function Login() {
     <div className="login">
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
-          <h1>Welcome back</h1>
+          <h1>Bun venit înapoi</h1>
           <input
             name="username"
             required
             minLength={3}
             maxLength={20}
             type="text"
-            placeholder="Username"
+            placeholder="Nume de utilizator"
           />
           <input
             name="password"
             type="password"
             required
-            placeholder="Password"
+            placeholder="Parolă"
           />
           <button disabled={isLoading}>Login</button>
           {error && <span>{error}</span>}
-          <Link to="/register">{"Don't"} you have an account?</Link>
+          <Link to="/register">Nu aveți un cont?</Link>
         </form>
       </div>
       <div className="imgContainer">

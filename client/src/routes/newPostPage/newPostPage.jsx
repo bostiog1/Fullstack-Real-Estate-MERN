@@ -54,80 +54,79 @@ function NewPostPage() {
   return (
     <div className="newPostPage">
       <div className="formContainer">
-        <h1>Add New Post</h1>
+        <h1>Adaugă Proprietate</h1>
         <div className="wrapper">
           <form onSubmit={handleSubmit}>
             <div className="item">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="title">Titlu</label>
               <input id="title" name="title" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="price">Price</label>
+              <label htmlFor="price">Preț</label>
               <input id="price" name="price" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="address">Address</label>
+              <label htmlFor="address">Adresă</label>
               <input id="address" name="address" type="text" />
             </div>
             <div className="item description">
-              <label htmlFor="desc">Description</label>
+              <label htmlFor="desc">Descriere</label>
               <ReactQuill theme="snow" onChange={setValue} value={value} />
             </div>
             <div className="item">
-              <label htmlFor="city">City</label>
+              <label htmlFor="city">Oraș</label>
               <input id="city" name="city" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="bedroom">Bedroom Number</label>
+              <label htmlFor="bedroom">Număr camere</label>
               <input min={1} id="bedroom" name="bedroom" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="bathroom">Bathroom Number</label>
+              <label htmlFor="bathroom">Număr băi</label>
               <input min={1} id="bathroom" name="bathroom" type="number" />
             </div>
-            <div className="item">
+            {/* <div className="item">
               <label htmlFor="latitude">Latitude</label>
               <input id="latitude" name="latitude" type="text" />
             </div>
             <div className="item">
               <label htmlFor="longitude">Longitude</label>
               <input id="longitude" name="longitude" type="text" />
-            </div>
+            </div> */}
             <div className="item">
-              <label htmlFor="type">Type</label>
+              <label htmlFor="type">Tip</label>
               <select name="type">
                 <option value="rent" defaultChecked>
-                  Rent
+                  Inchiriere
                 </option>
-                <option value="buy">Buy</option>
+                <option value="buy">Vindere</option>
               </select>
             </div>
             <div className="item">
-              <label htmlFor="type">Property</label>
+              <label htmlFor="type">Proprietate</label>
               <select name="property">
-                <option value="apartment">Apartment</option>
-                <option value="house">House</option>
-                <option value="condo">Condo</option>
-                <option value="land">Land</option>
+                <option value="apartment">Apartament</option>
+                <option value="house">Casă</option>
+              
               </select>
             </div>
 
             <div className="item">
-              <label htmlFor="utilities">Utilities Policy</label>
+              <label htmlFor="utilities">Politica privind utilitățile</label>
               <select name="utilities">
-                <option value="owner">Owner is responsible</option>
-                <option value="tenant">Tenant is responsible</option>
-                <option value="shared">Shared</option>
+                <option value="owner">Proprietarul este responsabil</option>
+                <option value="tenant">Locatarul este responsabil</option>
+                <option value="shared">Partajate</option>
               </select>
             </div>
             <div className="item">
-              <label htmlFor="pet">Pet Policy</label>
+              <label htmlFor="pet">Politica privind animalele de companie</label>
               <select name="pet">
-                <option value="allowed">Allowed</option>
-                <option value="not-allowed">Not Allowed</option>
+                <option value="allowed">Permise</option>
+                <option value="not-allowed">Nepermis</option>
               </select>
             </div>
-            <div className="item">
+            {/* <div className="item">
               <label htmlFor="income">Income Policy</label>
               <input
                 id="income"
@@ -135,13 +134,13 @@ function NewPostPage() {
                 type="text"
                 placeholder="Income Policy"
               />
-            </div>
+            </div> */}
             <div className="item">
-              <label htmlFor="size">Total Size (sqft)</label>
+              <label htmlFor="size">Dimensiune totală (mp)</label>
               <input min={0} id="size" name="size" type="number" />
             </div>
-            <div className="item">
-              <label htmlFor="school">School</label>
+            {/* <div className="item"> */}
+              {/* <label htmlFor="school">School</label>
               <input min={0} id="school" name="school" type="number" />
             </div>
             <div className="item">
@@ -151,8 +150,8 @@ function NewPostPage() {
             <div className="item">
               <label htmlFor="restaurant">Restaurant</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
-            </div>
-            <button className="sendButton">Add</button>
+            </div> */}
+            <button className="sendButton">Adaugă</button>
             {error && <span>error</span>}
           </form>
         </div>

@@ -185,7 +185,7 @@ const SearchBar = () => {
           <input
             type="text"
             name="city"
-            placeholder="City"
+            placeholder="Oraș"
             onChange={handleChange}
           />
           <input
@@ -193,7 +193,7 @@ const SearchBar = () => {
             name="minPrice"
             min={0}
             max={10000000}
-            placeholder="Min Price"
+            placeholder="Preț Minim"
             onChange={handleChange}
           />
           <input
@@ -201,7 +201,7 @@ const SearchBar = () => {
             name="maxPrice"
             min={0}
             max={10000000}
-            placeholder="Max Price"
+            placeholder="Preț Maxim"
             onChange={handleChange}
           />
           <Link
