@@ -118,6 +118,7 @@ export const profilePosts = async (req, res) => {
     const userPosts = await prisma.post.findMany({
       where: { userId: tokenUserId },
     });
+    // Această parte este deja corectă, așa că nu o schimbăm
     const saved = await prisma.savedPost.findMany({
       where: { userId: tokenUserId },
       include: {
@@ -125,6 +126,7 @@ export const profilePosts = async (req, res) => {
       },
     });
 
+    // Mapăm obiectele saved.post într-un array de postări
     const savedPosts = saved.map((item) => item.post);
     res.status(200).json({ userPosts, savedPosts });
   } catch (err) {
