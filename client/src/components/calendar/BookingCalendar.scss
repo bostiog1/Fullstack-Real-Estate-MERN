@@ -1,0 +1,182 @@
+.booking-calendar-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .not-rentable {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .nav-btn {
+      background: #f5f5f5;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #e0e0e0;
+      }
+    }
+  }
+
+  .calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 10px;
+
+    .weekday {
+      text-align: center;
+      font-weight: bold;
+      color: #666;
+      padding: 8px 4px;
+      font-size: 14px;
+    }
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+
+    .calendar-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+
+      &:hover:not(.past):not(.booked):not(.empty) {
+        background: #f0f8ff;
+        border-color: #4caf50;
+      }
+
+      &.empty {
+        cursor: default;
+      }
+
+      &.past {
+        color: #ccc;
+        cursor: not-allowed;
+      }
+
+      &.booked {
+        background: #ffebee;
+        color: #d32f2f;
+        cursor: not-allowed;
+        position: relative;
+
+        &::after {
+          content: "✕";
+          position: absolute;
+          font-size: 10px;
+          top: 2px;
+          right: 2px;
+        }
+      }
+
+      &.selected {
+        background: #e8f5e8;
+        color: #2e7d32;
+      }
+
+      &.check-in {
+        background: #4caf50;
+        color: white;
+        font-weight: bold;
+      }
+
+      &.check-out {
+        background: #4caf50;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .calendar-legend {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: #666;
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+
+        &.booked {
+          background: #ffebee;
+          border: 1px solid #d32f2f;
+        }
+
+        &.selected {
+          background: #4caf50;
+        }
+
+        &.past {
+          background: #f5f5f5;
+          border: 1px solid #ccc;
+        }
+      }
+    }
+  }
+
+  .selected-period {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #4caf50;
+
+    p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #333;
+
+      strong {
+        color: #2e7d32;
+      }
+    }
+  }
+}
