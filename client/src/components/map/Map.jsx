@@ -4,12 +4,15 @@ import "leaflet/dist/leaflet.css";
 import Pin from "../pin/Pin";
 
 function Map({ items }) {
+  // Coordonatele României
+  const romaniaCenter = [45.9432, 24.9668];
+
   return (
     <MapContainer
       center={
         items.length === 1
           ? [items[0].latitude, items[0].longitude]
-          : [52.4797, -1.90269]
+          : romaniaCenter
       }
       zoom={7}
       scrollWheelZoom={false}
