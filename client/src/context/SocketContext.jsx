@@ -9,12 +9,24 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    setSocket(io("http://localhost:4000"));
-  }, []);
+    if (currentUser) {
+      const newSocket = io("http://localhost:4000");
+      setSocket(newSocket);
 
-  useEffect(() => {
-  currentUser && socket?.emit("newUser", currentUser.id);
-  }, [currentUser, socket]);
+      // Înregistrează user-ul ca fiind online
+      newSocket.emit("newUser", currentUser.id);
+
+      return () => {
+        newSocket.close();
+      };
+    } else {
+      // Dacă user-ul se deloghează, închide socket-ul
+      if (socket) {
+        socket.close();
+        setSocket(null);
+      }
+    }
+  }, [currentUser]);
 
   return (
     <SocketContext.Provider value={{ socket }}>
