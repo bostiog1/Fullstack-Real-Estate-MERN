@@ -141,34 +141,36 @@ const AboutPage = () => {
       </style>
       <div className="aboutPage">
         <div className="textContainer">
-          <h1>Who We Are: Your Trusted Partner in Real Estate</h1>
+          <h1>
+            Cine suntem: Partenerul dumneavoastră de încredere în domeniul
+            imobiliar
+          </h1>
           <p>
-            At LamaEstate, we believe that finding a home is more than just a
-            transaction; it's a significant life event. Our mission is to
-            simplify the journey by providing unparalleled service, expert
-            guidance, and a curated selection of properties that match your
-            unique vision. With over 16 years of experience, we've helped
-            thousands of clients find their dream homes and investments.
+            La BoostEstate, credem că găsirea unei locuințe este mai mult decât
+            o simplă tranzacție ; este un eveniment de viață important. Misiunea
+            noastră este de a simplifica călătoria prin furnizarea de servicii
+            de neegalat, expert îndrumare, și o selecție curată de proprietăți
+            care se potrivesc viziunea ta unică. Cu peste 16 ani de experiență,
+            am ajutat mii de clienți să-și găsească casele și investițiile de
+            vis.
           </p>
           <p>
-            Our team of dedicated professionals is committed to making your real
-            estate experience seamless and enjoyable. We leverage cutting-edge
-            technology and deep market knowledge to ensure you have all the
-            information you need, right at your fingertips.
+            Echipa noastră de profesioniști dedicați se angajează să vă facă
+            experiența imobiliară fără probleme și plăcută. Ne folosim de
+            tehnologia de ultimă generație și de o cunoaștere aprofundată a
+            pieței pentru a ne asigura că aveți toate informațiile de care aveți
+            nevoie, chiar la îndemână.
           </p>
 
           <div className="boxes">
             <div className="box">
               <h1>2000+</h1>
-              <h2>Properties Sold</h2>
+              <h2>Proprietăți existente</h2>
             </div>
+
             <div className="box">
-              <h1>200</h1>
-              <h2>Awards Gained</h2>
-            </div>
-            <div className="box">
-              <h1>16+</h1>
-              <h2>Years of Experience</h2>
+              <h1>5+</h1>
+              <h2>Ani de experiență</h2>
             </div>
           </div>
         </div>

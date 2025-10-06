@@ -127,6 +127,8 @@ const ContactPage = () => {
             align-items: center;
             justify-content: center;
             padding: 3rem;
+            border-radius: 3%;
+
           }
 
           .infoCard {
@@ -203,14 +205,14 @@ const ContactPage = () => {
         {/* Form Container */}
         <div className="formContainer">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8">
-            Contact Us
+            Contactați-ne
           </h1>
           <div className="formCard">
-            <h2 className="formTitle">Send us a message</h2>
+            <h2 className="formTitle">Trimiteți un mesaj</h2>
             <form onSubmit={handleSubmit}>
               <div className="formGroup">
                 <label htmlFor="name" className="formLabel">
-                  Name
+                  Nume
                 </label>
                 <input
                   type="text"
@@ -238,7 +240,7 @@ const ContactPage = () => {
               </div>
               <div className="formGroup">
                 <label htmlFor="message" className="formLabel">
-                  Message
+                  Mesaj
                 </label>
                 <textarea
                   id="message"
@@ -251,7 +253,7 @@ const ContactPage = () => {
                 ></textarea>
               </div>
               <button type="submit" className="formButton">
-                Send Message
+                Trimite mesaj
               </button>
             </form>
           </div>
@@ -260,7 +262,7 @@ const ContactPage = () => {
         {/* Info Container */}
         <div className="infoContainer">
           <div className="infoCard">
-            <h2 className="infoTitle">Our Information</h2>
+            <h2 className="infoTitle">Informațiile noastre</h2>
             <div className="infoItem">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -269,7 +271,7 @@ const ContactPage = () => {
               >
                 <path d="M168.3 499.2C110.4 482.3 0 361.6 0 248 0 111.4 114.6 0 256 0s256 111.4 256 248c0 113.6-110.4 234.3-168.3 251.2-36.8 11.2-76.8 11.2-113.5 0zM256 128c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64z" />
               </svg>
-              <p>Iulie Maniu 3, Bucharest, 69420</p>
+              <p>Iuliu Maniu 3, Bucharest, 69420</p>
             </div>
             <div className="infoItem">
               <svg
@@ -279,7 +281,7 @@ const ContactPage = () => {
               >
                 <path d="M164.9 24.6c-7.7-18.6-28-28.8-47.9-28.8s-40.2 10.2-47.9 28.8L73.9 84.5C21.4 199.1 82.5 359.8 196.9 414.7l22.1 10.5c18.3 8.7 39.8 5.7 54.8-6.4l26.6-21.7c8.8-7.2 14.8-17.7 17.5-29.2s-.7-23.4-9.2-32.2l-51.7-52c-8.8-8.9-22.8-11.4-34.4-6.9L164.9 24.6z" />
               </svg>
-              <p>+1 (555) 123-4567</p>
+              <p>+40 (767) 323-4567</p>
             </div>
             <div className="infoItem">
               <svg
@@ -297,15 +299,16 @@ const ContactPage = () => {
         {showConfirmation && (
           <div className="modalContainer">
             <div className="modalContent">
-              <h3 className="modalTitle">Message Sent!</h3>
+              <h3 className="modalTitle">Mesaj trimis!</h3>
               <p>
-                Thank you for your message! We will get back to you shortly.
+                Vă mulțumim pentru mesajul dumneavoastră! Vă vom răspunde în
+                scurt timp.
               </p>
               <button
                 className="modalButton"
                 onClick={() => setShowConfirmation(false)}
               >
-                Close
+                Închidere
               </button>
             </div>
           </div>
