@@ -15,15 +15,15 @@
       gap: 50px;
       height: 100%;
 
-      @include lg{
+      @include lg {
         padding-right: 50px;
       }
 
-      @include md{
+      @include md {
         padding: 0;
       }
 
-      @include sm{
+      @include sm {
         justify-content: flex-start;
       }
 
@@ -65,12 +65,26 @@
     background-color: #fcf5f3;
     position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 130px; // Spațiu între cele două imagini
+    padding: 20px;
+    border-radius: 3%;
 
     @include md {
       display: none;
     }
 
+    .imageWrapper {
+      position: relative; // Wrapper pentru fiecare imagine pentru a controla mai bine dimensiunea
+      width: 80%; // Lățimea wrapper-ului, poți ajusta
+      max-width: 400px; // Lățime maximă pentru a nu se întinde prea mult
+      height: 200px; // Înăltime fixă pentru imagini (poți ajusta sau folosi aspect-ratio)
+      overflow: hidden; // Asigură că imaginea rotunjită nu iese din chenar
+      border-radius: 15px; // Colțuri rotunjite
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // O umbră subtilă
+    }
     img {
       width: 115%;
       position: absolute;

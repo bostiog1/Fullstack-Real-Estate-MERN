@@ -17,12 +17,11 @@ function HomePage() {
           <p>
             Acesta este un site de imobiliare care simplifică procesul de a găsi
             proprietatea perfectă, fie că ești în căutarea unei case sau a unui
-            apartament. Navigarea intuitivă,
-            filtrele detaliate și fotografiile de înaltă rezoluție te ajută să
-            descoperi rapid și ușor locuința la care visezi.
+            apartament. Navigarea intuitivă, filtrele detaliate și fotografiile
+            de înaltă rezoluție te ajută să descoperi rapid și ușor locuința la
+            care visezi.
           </p>
           <SearchBar />
-          {/* Add a clear call to action to view all properties */}
           <div className="mt-8 flex items-center justify-center">
             <Link
               to="/list"
@@ -44,7 +43,12 @@ function HomePage() {
         </div>
       </div>
       <div className="imgContainer">
-        <img src="/bg.png" alt="" />
+        <div className="imageWrapper imageTop">
+          <img src="/bg1.png" alt="Descrierea imaginii 1" />
+        </div>
+        <div className="imageWrapper imageBottom">
+          <img src="/bg2.png" alt="Descrierea imaginii 2" />
+        </div>
       </div>
     </div>
   );
