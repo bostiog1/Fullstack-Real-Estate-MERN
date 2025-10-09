@@ -1,141 +1,81 @@
-// import "./listPage.scss";
-// import Filter from "../../components/filter/Filter";
-// import Card from "../../components/card/Card";
-// import Map from "../../components/map/Map";
-// import { Await, useLoaderData } from "react-router-dom";
-// import { Suspense } from "react";
-
-// function ListPage() {
-//   const data = useLoaderData();
-
-//   return (
-//     <div className="listPage">
-//       <div className="listContainer">
-//         <div className="wrapper">
-//           <Filter />
-//           <Suspense fallback={<p>Loading...</p>}>
-//             <Await
-//               resolve={data.postResponse}
-//               errorElement={<p>Error loading posts!</p>}
-//             >
-//               {(postResponse) =>
-//                 postResponse.data.map((post) => (
-//                   <Card key={post.id} item={post} />
-//                 ))
-//               }
-//             </Await>
-//           </Suspense>
-//         </div>
-//       </div>
-//       <div className="mapContainer">
-//         <Suspense fallback={<p>Loading...</p>}>
-//           <Await
-//             resolve={data.postResponse}
-//             errorElement={<p>Error loading posts!</p>}
-//           >
-//             {(postResponse) => <Map items={postResponse.data} />}
-//           </Await>
-//         </Suspense>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ListPage;
-
-// import "./listPage.scss";
-// import Filter from "../../components/filter/Filter";
-// import Card from "../../components/card/Card";
-// import Map from "../../components/map/Map";
-// import { Await, useLoaderData } from "react-router-dom";
-// import { Suspense } from "react";
-// import { listData } from "../../lib/dummydata";
-
-// function ListPage() {
-//   // We are using the dummy data directly for now,
-//   // so we'll comment out the useLoaderData hook.
-//   // const data = useLoaderData();
-
-//   const data = listData;
-
-//   // The previous compilation error indicates an issue with resolving file paths.
-//   // Please double-check that the files listed below exist in the exact paths specified:
-//   // - src/routes/listPage/listPage.scss
-//   // - src/components/filter/Filter
-//   // - src/components/card/Card
-//   // - src/components/map/Map
-//   // - src/lib/dummydata
-//   // The code itself is now configured to use the dummy data directly.
-
-//   return (
-//     <div className="listPage">
-//       <div className="listContainer">
-//         <div className="wrapper">
-//           <Filter />
-//           {/*
-//             We don't need Await and Suspense for static dummy data.
-//             We can directly map over the data.
-//           */}
-//           {data.map((post) => (
-//             <Card key={post.id} item={post} />
-//           ))}
-//         </div>
-//       </div>
-//       <div className="mapContainer">
-//         {/* We also pass the dummy data directly to the Map component. */}
-//         <Map items={data} />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ListPage;
-
-import "./listPage.scss";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Filter from "../../components/filter/Filter";
 import Card from "../../components/card/Card";
 import Map from "../../components/map/Map";
-import { useState } from "react";
-import { listData } from "../../lib/dummydata";
+import apiRequest from "../../lib/apiRequest";
+import "./listPage.scss";
 
 function ListPage() {
-  const [filteredData, setFilteredData] = useState(listData);
+  const [searchParams] = useSearchParams();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch posts from backend
+  const fetchPosts = async (queryParams = {}) => {
+    console.log("=== FRONTEND DEBUG ===");
+    console.log("fetchPosts called with:", queryParams);
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      // Construiește query string din parametri
+      const params = new URLSearchParams();
+      Object.keys(queryParams).forEach((key) => {
+        if (queryParams[key] && queryParams[key] !== "") {
+          params.append(key, queryParams[key]);
+          console.log(`Added param: ${key} = ${queryParams[key]}`);
+        }
+      });
+
+      const queryString = params.toString();
+      console.log("Final query string:", queryString);
+      console.log("Full URL:", `/posts?${queryString}`);
+
+      // Folosește ruta existentă de posts cu parametrii de căutare
+      const response = await apiRequest.get(`/posts?${queryString}`);
+
+      console.log("API Response:", response);
+      console.log("Response data:", response.data);
+      console.log("Posts received:", response.data.length);
+
+      // Răspunsul este direct array-ul de posts
+      setPosts(response.data);
+    } catch (err) {
+      console.error("API Error:", err);
+      console.error("Error response:", err.response);
+      console.error("Error message:", err.message);
+      setError("Nu s-au putut încărca proprietățile.");
+    } finally {
+      setLoading(false);
+      console.log("=== END FRONTEND DEBUG ===");
+    }
+  };
+
+  // Initial load și când se schimbă URL params
+  useEffect(() => {
+    console.log("=== USEEFFECT TRIGGERED ===");
+    console.log("Current searchParams:", Object.fromEntries(searchParams));
+
+    const query = {
+      type: searchParams.get("type") || "",
+      city: searchParams.get("city") || "",
+      property: searchParams.get("property") || "",
+      minPrice: searchParams.get("minPrice") || "",
+      maxPrice: searchParams.get("maxPrice") || "",
+      bedroom: searchParams.get("bedroom") || "",
+    };
+
+    console.log("Constructed query object:", query);
+    fetchPosts(query);
+  }, [searchParams]);
 
   const handleFilter = (query) => {
-    let filtered = listData.filter((post) => {
-      // Filter by type
-      if (query.type && post.type !== query.type) {
-        return false;
-      }
-      // Filter by property type
-      if (query.property && post.property !== query.property) {
-        return false;
-      }
-      // Filter by minPrice
-      if (query.minPrice && post.price < parseInt(query.minPrice)) {
-        return false;
-      }
-      // Filter by maxPrice
-      if (query.maxPrice && post.price > parseInt(query.maxPrice)) {
-        return false;
-      }
-      // Filter by bedroom count
-      if (query.bedroom && post.bedroom < parseInt(query.bedroom)) {
-        return false;
-      }
-      // Filter by city
-      if (query.city) {
-        // Simple case-insensitive check for city
-        const postCity = post.address.split(",")[1]?.trim().toLowerCase();
-        const queryCity = query.city.toLowerCase();
-        if (postCity !== queryCity) {
-          return false;
-        }
-      }
-      return true;
-    });
-
-    setFilteredData(filtered);
+    console.log("=== FILTER APPLIED ===");
+    console.log("Filter query:", query);
+    fetchPosts(query);
   };
 
   return (
@@ -143,13 +83,48 @@ function ListPage() {
       <div className="listContainer">
         <div className="wrapper">
           <Filter onFilter={handleFilter} />
-          {filteredData.map((post) => (
-            <Card key={post.id} item={post} />
-          ))}
+
+          {loading && (
+            <div className="loading">
+              <p>Se încarcă proprietățile...</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="error">
+              <p>{error}</p>
+              <button onClick={() => fetchPosts()}>Încearcă din nou</button>
+            </div>
+          )}
+
+          {!loading && !error && posts.length === 0 && (
+            <div className="no-results">
+              <h3>Nu s-au găsit proprietăți</h3>
+              <p>Încearcă să modifici criteriile de căutare.</p>
+            </div>
+          )}
+
+          {!loading && !error && posts.length > 0 && (
+            <>
+              <div className="results-count">
+                <p>{posts.length} proprietăți găsite</p>
+              </div>
+              {posts.map((post) => (
+                <Card key={post.id} item={post} />
+              ))}
+            </>
+          )}
         </div>
       </div>
+
       <div className="mapContainer">
-        <Map items={filteredData} />
+        {posts.length > 0 ? (
+          <Map items={posts} />
+        ) : (
+          <div className="no-map">
+            <p>Harta va fi afișată când vor fi proprietăți de arătat</p>
+          </div>
+        )}
       </div>
     </div>
   );
