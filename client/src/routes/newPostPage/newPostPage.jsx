@@ -11,7 +11,7 @@ function NewPostPage() {
   const [images, setImages] = useState([]);
   const [error, setError] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,8 +29,8 @@ function NewPostPage() {
           bathroom: parseInt(inputs.bathroom),
           type: inputs.type,
           property: inputs.property,
-          latitude: inputs.latitude,
-          longitude: inputs.longitude,
+          // latitude: inputs.latitude,
+          // longitude: inputs.longitude,
           images: images,
         },
         postDetail: {
@@ -44,7 +44,7 @@ function NewPostPage() {
           restaurant: parseInt(inputs.restaurant),
         },
       });
-      navigate("/"+res.data.id)
+      navigate("/" + res.data.id);
     } catch (err) {
       console.log(err);
       setError(error);
@@ -85,29 +85,21 @@ function NewPostPage() {
               <label htmlFor="bathroom">Număr băi</label>
               <input min={1} id="bathroom" name="bathroom" type="number" />
             </div>
-            {/* <div className="item">
-              <label htmlFor="latitude">Latitude</label>
-              <input id="latitude" name="latitude" type="text" />
-            </div>
-            <div className="item">
-              <label htmlFor="longitude">Longitude</label>
-              <input id="longitude" name="longitude" type="text" />
-            </div> */}
+
             <div className="item">
               <label htmlFor="type">Tip</label>
               <select name="type">
-                <option value="rent" defaultChecked>
-                  Inchiriere
+                <option value="inchiriaza" defaultChecked>
+                  Închiriere
                 </option>
-                <option value="buy">Vindere</option>
+                <option value="cumpara">Vindere</option>
               </select>
             </div>
             <div className="item">
-              <label htmlFor="type">Proprietate</label>
+              <label htmlFor="property">Proprietate</label>
               <select name="property">
                 <option value="apartment">Apartament</option>
                 <option value="house">Casă</option>
-              
               </select>
             </div>
 
@@ -120,7 +112,9 @@ function NewPostPage() {
               </select>
             </div>
             <div className="item">
-              <label htmlFor="pet">Politica privind animalele de companie</label>
+              <label htmlFor="pet">
+                Politica privind animalele de companie
+              </label>
               <select name="pet">
                 <option value="allowed">Permise</option>
                 <option value="not-allowed">Nepermis</option>
@@ -140,7 +134,7 @@ function NewPostPage() {
               <input min={0} id="size" name="size" type="number" />
             </div>
             {/* <div className="item"> */}
-              {/* <label htmlFor="school">School</label>
+            {/* <label htmlFor="school">School</label>
               <input min={0} id="school" name="school" type="number" />
             </div>
             <div className="item">
